@@ -164,10 +164,7 @@ local function projects(opts)
       map("i", "<c-r>", recent_project_files)
       map("i", "<c-w>", change_working_directory)
 
-      print("MY CHANGES 2: " .. vim.inspect(config))
       for type, mappings_for_type in pairs((config and config.options and config.options.mappings) or {}) do
-          print(type)
-          print(vim.inspect(mappings_for_type))
           for keys, f in pairs(mappings_for_type) do
               map(type, keys, f)
           end
@@ -181,17 +178,6 @@ local function projects(opts)
     end,
   }):find()
 end
-
-local function print_hi()
-    print("hi")
-end
-
-local mappings = {
-    i = {
-        ["<M-t>"] = print_hi
-    }
-}
-
 
 return telescope.register_extension({
   exports = {
